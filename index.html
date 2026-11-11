@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResolveIT | IT Management</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2>Resolve<span>IT</span></h2>
+        <p class="side-label">WORKSPACE</p>
+        <a class="active" href="/">▦ Dashboard</a>
+        <a href="#create">＋ Create Ticket</a>
+        <a href="#tickets">▤ All Tickets</a>
+        <div class="sidebar-bottom">
+            <p>IT SERVICE MANAGEMENT</p>
+            <small>Version 1.0.0</small>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">WORKSPACE / OVERVIEW</p>
+                <h1>IT Dashboard</h1>
+                <p class="subtitle">Monitor and manage your IT incidents.</p>
+            </div>
+            <div class="admin-tag">● System Online</div>
+        </header>
+
+        <section class="stats">
+            <div class="stat-card">
+                <p>Total Tickets</p>
+                <h2 id="total">0</h2>
+            </div>
+            <div class="stat-card">
+                <p>Open</p>
+                <h2 id="open">0</h2>
+            </div>
+            <div class="stat-card">
+                <p>In Progress</p>
+                <h2 id="in-progress">0</h2>
+            </div>
+            <div class="stat-card">
+                <p>Resolved</p>
+                <h2 id="resolved">0</h2>
+            </div>
+        </section>
+
+        <section class="panel" id="create">
+            <div class="section-heading">
+                <div>
+                    <h2>Create New Ticket</h2>
+                    <p>Report a technical issue to the IT department.</p>
+                </div>
+            </div>
+
+            <form id="ticket-form">
+                <div class="form-grid">
+                    <div class="field">
+                        <label>Issue Title</label>
+                        <input type="text" id="title"
+                            placeholder="e.g. Laptop not starting" required>
+                    </div>
+
+                    <div class="field">
+                        <label>Category</label>
+                        <select id="category" required>
+                            <option value="">Select category</option>
+                            <option>Hardware</option>
+                            <option>Software</option>
+                            <option>Network</option>
+                            <option>Security</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Priority</label>
+                        <select id="priority" required>
+                            <option value="Low">Low</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="High">High</option>
+                            <option value="Critical">Critical</option>
+                        </select>
+                    </div>
+
+                    <div class="field full-width">
+                        <label>Issue Description</label>
+                        <textarea id="description" rows="4"
+                            placeholder="Describe your technical issue..."
+                            required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" id="submit-btn">Submit Ticket →</button>
+                <p id="form-message"></p>
+            </form>
+        </section>
+
+        <section class="panel" id="tickets">
+            <div class="section-heading">
+                <div>
+                    <h2>Recent Tickets</h2>
+                    <p>Track and manage reported incidents.</p>
+                </div>
+                <button class="refresh-btn" onclick="loadDashboard()">↻ Refresh</button>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ticket ID</th>
+                            <th>Issue</th>
+                            <th>Category</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Assigned To</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ticket-list">
+                        <tr>
+                            <td colspan="7">Loading tickets...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer>© 2026 ResolveIT — IT Service Management System</footer>
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
